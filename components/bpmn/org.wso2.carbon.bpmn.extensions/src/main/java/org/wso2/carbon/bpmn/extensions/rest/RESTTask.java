@@ -144,7 +144,8 @@ public class RESTTask implements JavaDelegate {
     public void execute(DelegateExecution execution) {
         if (log.isDebugEnabled()) {
             log.debug("Executing RESTInvokeTask " + method.getValue(execution).toString() + " - " +
-                    serviceURL.getValue(execution).toString());
+                    (serviceURL != null ? serviceURL.getValue(execution).toString() : serviceRef.getValue(execution)
+                            .toString()));
         }
 
         RESTInvoker restInvoker = BPMNRestExtensionHolder.getInstance().getRestInvoker();
